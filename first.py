@@ -7,24 +7,29 @@ sgpa = []
 reg = re.compile('S1500')
 reg1 = re.compile('SGPA')
 count = 10 
-
-dic ={};
-rol=0;
 for line in file:
 	
+	count +=1  
 	if(reg1.match(line)):
-		line=file.next();
-		line=file.next();
-		dic[rol]=line;
+		count =0 
+
+	if(count ==2):
+		sgpa.append(line)
+		count = 10 
 			
 	if(reg.match(line)):
-		rol=line;
-		dic[rol]=0;
+		roll += [line]
 		
 file.close()
 
-sort_dict=sorted(dic.items(),key=itemgetter(1))
+dictionary  = dict(zip(roll, sgpa))
+sort_dict = sorted(dictionary.items(), key = itemgetter(1))
 print (sort_dict)
+
+
+
+
+
 
 
 
